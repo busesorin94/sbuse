@@ -20,7 +20,7 @@ namespace Geometrie
     {
         public AboutWindow()
         {
-            InitializeComponent();
+            InitializeComponent();sdasd
         }
     }
 }
