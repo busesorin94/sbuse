@@ -267,7 +267,7 @@ namespace Geometrie
             Ellipse myEllipse = new Ellipse();
             SolidColorBrush mySolidColorBrush = new SolidColorBrush();
             mySolidColorBrush.Color = Colors.Blue;
-            myEllipse.Fill = mySolidColorBrush;
+            myEllipse.Fill = mySolidColorBrush; 
             myEllipse.StrokeThickness = 0;
             myEllipse.Stroke = Brushes.White;
             myEllipse.Width = _pointWidth;
