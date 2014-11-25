@@ -252,14 +252,32 @@ namespace Geometrie
 
         bool Ecuatie(Point A, Point B, Point C)
         {
-            if ((A.X == B.X && C.X == B.X) || (A.Y == B.Y && C.Y == B.Y)) return true;
+            if ((A.X == B.X && C.X == B.X && ((A.Y <= C.Y && C.Y <= B.Y) || (A.Y >= C.Y && C.Y >= B.Y))) || (A.Y == B.Y && C.Y == B.Y && ((A.X <= C.X && C.X <= B.X) || (A.X >= C.X && C.X >= B.X)))) return true; //********
             if ((A.X == B.X && C.X != B.X) || (A.Y == B.Y && C.Y != B.Y)) return false;
             int a, b, c;
             b = (int)(-B.Y + A.Y);
             a = (int)(B.X - A.X);
             c = (int)(-A.Y * (B.X - A.X) + A.X * (B.Y - A.Y));
-            if (a * C.X + b * C.X + c == 0) return true;
+            if (a * C.X + b * C.X + c == 0 && ordonare(A,B,C)) return true;
             return false;
+        }
+
+        bool ordonare(Point A, Point B, Point C)
+        {
+            Point[] a = new Point[3];
+            a[0] = A;
+            a[1] = B;
+            a[2] = C;
+            for (int i = 0; i < 2; ++i)
+                for (int j = i = 1; j < 3; ++j)
+                    if (a[i].X > a[j].X)
+                    {
+                        Point aux = a[i];
+                        a[i] = a[j];
+                        a[j] = aux;
+                    }
+            if (a[1].X == C.X && a[1].X == C.X) return true;
+            else return false;
         }
 
         public Ellipse CreatePoint(double x, double y)
